@@ -1,7 +1,7 @@
 {
   "uuid": "text-stash@aydin.tech",
   "name": "Text Stash – Clipboard History",
-  "description": "Clipboard history for text, built for large copies.\n\nEverything you copy is saved to disk and kept for 14 days by default (you can change this), so even multi-megabyte copies survive logouts and restarts. Press Super+Shift+V to open a searchable popup, then press Enter to paste straight into the app you were using.\n\n• Searches the full text, even inside very large copies\n• Pinned items are never deleted\n• Ctrl+1–9 pastes one of the top nine items\n• Pastes into terminals with Ctrl+Shift+V automatically\n• Skips copies that password managers mark as secret\n• Text only, and nothing leaves your computer",
+  "description": "Clipboard history for text, built for large copies.\n\nEverything you copy is saved to disk and kept for 14 days by default (you can change this), so even multi-megabyte copies survive logouts and restarts. Open the history from the top bar icon, or choose a keyboard shortcut in Settings, then press Enter to paste straight into the app you were using.\n\nClipboard access: this extension reads the clipboard every time you copy text and stores that text in your home folder (~/.local/share/text-stash). When you pick an item, it puts it back on the clipboard and presses Ctrl+V (Ctrl+Shift+V in terminals) for you. Clipboard data never leaves your computer and is never shared with anyone.\n\n* Searches the full text, even inside very large copies\n* Pinned items are never deleted\n* Ctrl+1–9 pastes one of the top nine items\n* Skips copies that password managers mark as secret\n* Pause recording at any time from the top bar menu\n* Text only",
   "url": "https://github.com/emre-aydin/text-stash",
   "shell-version": [
     "46",

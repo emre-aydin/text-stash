@@ -14,12 +14,12 @@ Then log out and back in. GNOME on Wayland only picks up new extensions at login
 
 ## Use
 
-- **Super+Shift+V** opens the history. You can also use the clipboard icon in the top bar.
-  To use **Super+V** instead, first remove it from GNOME's notification list shortcut, which still opens with Super+M:
+- Open the history from the clipboard icon in the top bar, or choose a keyboard shortcut in Settings. There's no shortcut by default, because GNOME's extension rules don't allow one for clipboard actions. **Super+Shift+V** is free on a standard GNOME setup.
+  To use **Super+V**, first remove it from GNOME's notification list shortcut, which still opens with Super+M:
   ```bash
   gsettings set org.gnome.shell.keybindings toggle-message-tray "['<Super>m']"
   ```
-  Then set Super+V as the shortcut in Settings.
+  Then set `<Super>v` as the shortcut in Settings.
 - Type to search. Large items are searched in full, straight from disk.
 - **Enter** pastes into the focused app. Terminals get Ctrl+Shift+V automatically.
 - **Shift+Enter** copies without pasting.
@@ -32,6 +32,8 @@ The history is saved in `~/.local/share/text-stash/`:
 
 - `index.json` holds the metadata and the first 1 KB of each item.
 - `entries/<id>.txt` holds the full text of each item. Files are private (0600).
+
+Clipboard text never leaves your computer and isn't shared with anyone.
 
 Copying the same text again moves the existing item to the top instead of saving a duplicate. Unpinned items are deleted when they haven't been used for `retention-days`, which defaults to 14. Copies larger than `max-entry-mb` (default 64 MB) are skipped, as are copies that password managers mark as secret.
 

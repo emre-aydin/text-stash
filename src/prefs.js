@@ -65,15 +65,20 @@ export default class TextStashPrefs extends ExtensionPreferences {
         behaviour.add(indicator);
 
         const shortcut = new Adw.EntryRow({
-            title: 'Shortcut (e.g. <Super><Shift>v, <Control><Alt>h)',
+            title: 'Shortcut, e.g. <Super><Shift>v (empty for none)',
             use_markup: false,
             show_apply_button: true,
             text: settings.get_strv('toggle-history')[0] ?? '',
         });
         shortcut.connect('apply', () => {
             const accel = shortcut.text.trim();
+            if (!accel) {
+                settings.set_strv('toggle-history', []);
+                shortcut.remove_css_class('error');
+                return;
+            }
             const [ok] = Gtk.accelerator_parse(accel);
-            if (ok && accel) {
+            if (ok) {
                 settings.set_strv('toggle-history', [accel]);
                 shortcut.remove_css_class('error');
             } else {

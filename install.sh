@@ -27,5 +27,5 @@ print(cur)
 EOF
 )"
     echo "Marked as enabled. GNOME Shell on Wayland only discovers new extensions at login:"
-    echo "log out and back in, then press Super+Shift+V."
+    echo "log out and back in, then choose a shortcut in the extension's Settings."
 fi
