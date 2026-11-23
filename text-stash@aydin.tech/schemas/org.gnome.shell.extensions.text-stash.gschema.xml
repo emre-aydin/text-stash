@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+  <schema id="org.gnome.shell.extensions.text-stash"
+          path="/org/gnome/shell/extensions/text-stash/">
+    <key name="toggle-history" type="as">
+      <default><![CDATA[['<Super><Shift>v']]]></default>
+      <summary>Shortcut that opens the clipboard history</summary>
+    </key>
+    <key name="retention-days" type="i">
+      <range min="1" max="3650"/>
+      <default>14</default>
+      <summary>Days to keep unpinned entries (counted from last use)</summary>
+    </key>
+    <key name="max-entry-mb" type="i">
+      <range min="1" max="512"/>
+      <default>64</default>
+      <summary>Largest copy (in MB) that is saved; bigger copies are ignored</summary>
+    </key>
+    <key name="paste-on-select" type="b">
+      <default>true</default>
+      <summary>Paste into the focused app after choosing an entry (Shift+Enter does the opposite)</summary>
+    </key>
+    <key name="skip-password-hints" type="b">
+      <default>true</default>
+      <summary>Ignore copies that password managers mark as secret</summary>
+    </key>
+    <key name="paused" type="b">
+      <default>false</default>
+      <summary>Temporarily stop recording new copies</summary>
+    </key>
+    <key name="show-indicator" type="b">
+      <default>true</default>
+      <summary>Show an icon in the top bar</summary>
+    </key>
+  </schema>
+</schemalist>

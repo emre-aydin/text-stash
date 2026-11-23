@@ -1,0 +1,92 @@
+/* SPDX-FileCopyrightText: 2026 Emre Aydin */
+/* SPDX-License-Identifier: GPL-2.0-or-later */
+
+.tch-dialog .modal-dialog-content-box {
+  padding: 12px;
+  spacing: 10px;
+}
+
+.tch-search {
+  font-size: 1.15em;
+  padding: 8px 12px;
+  border-radius: 10px;
+  min-width: 860px;
+}
+
+.tch-body {
+  spacing: 12px;
+}
+
+.tch-list-scroll {
+  width: 400px;
+  height: 480px;
+}
+
+.tch-list {
+  spacing: 2px;
+}
+
+.tch-row {
+  padding: 6px 10px;
+  border-radius: 8px;
+  text-align: left;
+}
+
+.tch-row:hover {
+  background-color: rgba(255, 255, 255, 0.07);
+}
+
+.tch-accent .tch-row:selected {
+  background-color: -st-accent-color;
+  color: -st-accent-fg-color;
+}
+
+/* GNOME 46 has no accent colour in the shell theme. */
+.tch-no-accent .tch-row:selected {
+  background-color: #3584e4;
+  color: #ffffff;
+}
+
+.tch-row-title {
+  font-weight: 500;
+}
+
+.tch-row-meta {
+  font-size: 0.82em;
+  opacity: 0.7;
+}
+
+.tch-row-key {
+  font-size: 0.78em;
+  opacity: 0.55;
+  padding-left: 8px;
+}
+
+.tch-preview {
+  width: 448px;
+  height: 480px;
+  spacing: 6px;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.25);
+}
+
+.tch-preview-meta {
+  font-size: 0.82em;
+  opacity: 0.7;
+}
+
+.tch-preview-text {
+  font-family: monospace;
+  font-size: 0.9em;
+}
+
+.tch-empty {
+  padding: 24px;
+  opacity: 0.6;
+}
+
+.tch-footer {
+  font-size: 0.8em;
+  opacity: 0.6;
+}
