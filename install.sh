@@ -2,8 +2,8 @@
 # Install (or update) the Text Stash GNOME Shell extension for the current user.
 set -euo pipefail
 
-UUID="text-stash@aydin.tech"
-SRC="$(cd "$(dirname "$0")" && pwd)/$UUID"
+SRC="$(cd "$(dirname "$0")" && pwd)/src"
+UUID="$(python3 -c 'import json, sys; print(json.load(open(sys.argv[1]))["uuid"])' "$SRC/metadata.json")"
 DEST="${XDG_DATA_HOME:-$HOME/.local/share}/gnome-shell/extensions/$UUID"
 
 mkdir -p "$DEST"

@@ -37,6 +37,16 @@ Copying the same text again moves the existing item to the top instead of saving
 
 All of these options are in Settings, or you can run `gnome-extensions prefs text-stash@aydin.tech`.
 
+## Development
+
+The extension's files are in `src/`. `install.sh` copies them to `~/.local/share/gnome-shell/extensions/<uuid>/`, because GNOME Shell only loads an extension from a folder named after its ID. The script reads the ID from `src/metadata.json`.
+
+To build the zip for extensions.gnome.org, run:
+
+```bash
+gnome-extensions pack src --extra-source=store.js --extra-source=dialog.js --extra-source=../LICENSE
+```
+
 ## License
 
 Copyright © 2026 Emre Aydin.
