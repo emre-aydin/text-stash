@@ -2,7 +2,14 @@
   "uuid": "text-stash@aydin.tech",
   "name": "Text Stash – Clipboard History",
   "description": "Clipboard history for text, built for large copies.\n\nEverything you copy is saved to disk and kept for 14 days by default (you can change this), so even multi-megabyte copies survive logouts and restarts. Press Super+Shift+V to open a searchable popup, then press Enter to paste straight into the app you were using.\n\n• Searches the full text, even inside very large copies\n• Pinned items are never deleted\n• Ctrl+1–9 pastes one of the top nine items\n• Pastes into terminals with Ctrl+Shift+V automatically\n• Skips copies that password managers mark as secret\n• Text only, and nothing leaves your computer",
-  "shell-version": ["46", "47", "48", "49", "50"],
+  "url": "https://github.com/emre-aydin/text-stash",
+  "shell-version": [
+    "46",
+    "47",
+    "48",
+    "49",
+    "50"
+  ],
   "settings-schema": "org.gnome.shell.extensions.text-stash",
   "version-name": "1.0"
 }

@@ -18,6 +18,8 @@ Gio._promisify(Gio.File.prototype, 'replace_contents_bytes_async', 'replace_cont
 Gio._promisify(Gio.File.prototype, 'delete_async');
 Gio._promisify(Gio.File.prototype, 'enumerate_children_async');
 Gio._promisify(Gio.FileEnumerator.prototype, 'next_files_async');
+Gio._promisify(Gio.File.prototype, 'make_directory_async');
+Gio._promisify(Gio.File.prototype, 'set_attributes_async');
 
 const INDEX_VERSION = 1;
 export const HEAD_CHARS = 1024;
@@ -73,7 +75,8 @@ export class HistoryStore {
     }
 
     async load() {
-        GLib.mkdir_with_parents(this._entriesDir, 0o700);
+        await this._ensureDir(Gio.File.new_for_path(this.dir));
+        await this._ensureDir(Gio.File.new_for_path(this._entriesDir));
         try {
             const [bytes] = await this._indexFile.load_contents_async(null);
             const data = JSON.parse(decoder.decode(bytes));
@@ -192,6 +195,11 @@ export class HistoryStore {
     }
 
     // Write any pending index change immediately (used on disable/logout).
+    //
+    // This is the only blocking file operation: the extension is being torn
+    // down, so an async write could be cut short and lose the last second of
+    // history. It only runs when a change is still waiting to be saved, and
+    // writes the small index file, never the entry texts.
     destroy() {
         this._destroyed = true;
         if (this._saveId) {
@@ -208,6 +216,20 @@ export class HistoryStore {
             }
         }
         this.onChanged = null;
+    }
+
+    // Create a private (0700) directory unless it already exists.
+    async _ensureDir(dir) {
+        try {
+            await dir.make_directory_async(GLib.PRIORITY_DEFAULT, null);
+        } catch (e) {
+            if (e.matches?.(Gio.IOErrorEnum, Gio.IOErrorEnum.EXISTS))
+                return;
+            throw e;
+        }
+        const info = new Gio.FileInfo();
+        info.set_attribute_uint32('unix::mode', 0o700);
+        await dir.set_attributes_async(info, Gio.FileQueryInfoFlags.NONE, GLib.PRIORITY_DEFAULT, null);
     }
 
     _fileFor(id) {
